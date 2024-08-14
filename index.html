@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizza Viva - Sabor y Alegría en Cada Rebanada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      /* Global Styles */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: #ff4500; /* OrangeRed color */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+      }
+
+      /* Language and Theme Switcher */
+      .language-switcher, .theme-switcher {
+        cursor: pointer;
+        margin-left: 10px;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: url('/src/pizza1.webp') no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 100px 0;
+        position: relative;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      .hero-section .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+      }
+
+      .hero-section p {
+        font-size: 1.25rem;
+      }
+
+      /* About Us Section */
+      #about img {
+        max-width: 100%;
+        border-radius: 10px;
+      }
+
+      /* Menu Section */
+      .menu-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+      }
+
+      .menu-card {
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-body {
+        text-align: center;
+      }
+
+      /* Dynamic Button Colors */
+      .btn-dynamic {
+        transition: background-color 0.3s ease;
+      }
+      .btn-dynamic:hover {
+        background-color: #32cd32; /* LimeGreen color */
+        color: white;
+      }
+
+      /* Gallery Section */
+      .gallery-section {
+        padding: 50px 0;
+        background-color: #f0f0f0;
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      /* Promotions Section */
+      .promotions-section {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+      }
+
+      .promotion-card {
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .promotion-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .card-footer {
+        text-align: center;
+        padding-top: 10px;
+      }
+
+      /* Reviews Section */
+      .reviews-section {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+      }
+
+      .review-card {
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Comments Section */
+      .comments-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+      }
+
+      .comment-card {
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        margin-bottom: 20px;
+      }
+
+      .comment-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Visit Us Section */
+      .visit-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+      }
+
+      /* Map Section */
+      .map-section {
+        padding: 50px 0;
+      }
+
+      /* Contact Section */
+      .contact-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+      }
+
+      .contact-card {
+        border: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      }
+
+      .contact-card .btn {
+        font-size: 1.25rem;
+        padding: 10px 20px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #ff4500;
+        color: white;
+        padding: 20px 0;
+        margin-top: 30px;
+      }
+
+      footer a {
+        color: white;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Dark Mode */
+      body.dark-mode {
+        background-color: #121212;
+        color: #e1e1e1;
+      }
+
+      body.dark-mode .navbar {
+        background-color: #333;
+      }
+
+      body.dark-mode .footer {
+        background-color: #333;
+      }
+
+      body.dark-mode .btn-dynamic {
+        background-color: #555;
+      }
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ff4500;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        display: none;
+        z-index: 999;
+      }
+
+      .back-to-top:hover {
+        background-color: #ff6347; /* Tomato color */
+        color: white;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+        .hero-section p {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 50px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="back-to-top">↑</a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Pizza Viva</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu">Menú</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Galería</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#promotions">Promociones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#reviews">Reseñas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#comments">Comentarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#visit">Visítanos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <div class="language-switcher">
+                <span id="lang-es" class="me-2">ES</span>
+                <span id="lang-en" class="me-2">EN</span>
+                <span id="lang-pt">PT</span>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="theme-switcher">
+                <span id="theme-toggle" class="ms-3">🌙</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <h1 data-lang-es="¡Sabor y Alegría en Cada Rebanada!" data-lang-en="Flavor and Joy in Every Slice!" data-lang-pt="Sabor e Alegria em Cada Fatia!">¡Sabor y Alegría en Cada Rebanada!</h1>
+        <p data-lang-es="Deliciosas pizzas artesanales con ingredientes frescos y auténticos." data-lang-en="Delicious handmade pizzas with fresh and authentic ingredients." data-lang-pt="Deliciosas pizzas artesanais com ingredientes frescos e autênticos.">Deliciosas pizzas artesanales con ingredientes frescos y auténticos.</p>
+        <a href="#menu" class="btn btn-primary btn-lg mt-4 btn-dynamic" data-lang-es="Ver Menú" data-lang-en="View Menu" data-lang-pt="Ver Menu">Ver Menú</a>
+      </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="container mt-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 data-lang-es="Sobre Nosotros" data-lang-en="About Us" data-lang-pt="Sobre Nós">Sobre Nosotros</h2>
+          <p data-lang-es="En Pizza Viva, nos enorgullecemos de ofrecer auténticas pizzas italianas hechas con los ingredientes más frescos. Con más de 20 años de experiencia, traemos el sabor de Italia a tu mesa."
+             data-lang-en="At Pizza Viva, we pride ourselves on offering authentic Italian pizzas made with the freshest ingredients. With over 20 years of experience, we bring the flavor of Italy to your table."
+             data-lang-pt="Na Pizza Viva, orgulhamo-nos de oferecer autênticas pizzas italianas feitas com os ingredientes mais frescos. Com mais de 20 anos de experiência, trazemos o sabor da Itália para a sua mesa.">
+            En Pizza Viva, nos enorgullecemos de ofrecer auténticas pizzas italianas hechas con los ingredientes más frescos. Con más de 20 años de experiencia, traemos el sabor de Italia a tu mesa.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <img src="/src/pizza.webp" class="img-fluid" alt="Sobre Nosotros">
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section container mt-5">
+      <h2 class="text-center" data-lang-es="Nuestro Menú" data-lang-en="Our Menu" data-lang-pt="Nosso Menu">Nuestro Menú</h2>
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card menu-card">
+            <img src="/src/pizzam.webp" class="card-img-top" alt="Pizza Margherita">
+            <div class="card-body">
+              <h5 class="card-title" data-lang-es="Pizza Margherita" data-lang-en="Margherita Pizza" data-lang-pt="Pizza Margherita">Pizza Margherita</h5>
+              <p class="card-text" data-lang-es="Tomate, mozzarella, albahaca fresca." data-lang-en="Tomato, mozzarella, fresh basil." data-lang-pt="Tomate, mozzarella, manjericão fresco.">Tomate, mozzarella, albahaca fresca.</p>
+              <a href="#" class="btn btn-primary btn-dynamic" data-bs-toggle="modal" data-bs-target="#pizzaModal" data-bs-pizza-title="Pizza Margherita" data-bs-pizza-img="/src/pizzam.webp" data-bs-pizza-description="Tomate, mozzarella, albahaca fresca." data-lang-es="Más Info" data-lang-en="More Info" data-lang-pt="Mais Info">Más Info</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card menu-card">
+            <img src="/src/pizapep.webp" class="card-img-top" alt="Pizza Pepperoni">
+            <div class="card-body">
+              <h5 class="card-title" data-lang-es="Pizza Pepperoni" data-lang-en="Pepperoni Pizza" data-lang-pt="Pizza Pepperoni">Pizza Pepperoni</h5>
+              <p class="card-text" data-lang-es="Tomate, mozzarella, pepperoni." data-lang-en="Tomato, mozzarella, pepperoni." data-lang-pt="Tomate, mozzarella, pepperoni.">Tomate, mozzarella, pepperoni.</p>
+              <a href="#" class="btn btn-primary btn-dynamic" data-bs-toggle="modal" data-bs-target="#pizzaModal" data-bs-pizza-title="Pizza Pepperoni" data-bs-pizza-img="/src/pizapep.webp" data-bs-pizza-description="Tomate, mozzarella, pepperoni." data-lang-es="Más Info" data-lang-en="More Info" data-lang-pt="Mais Info">Más Info</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card menu-card">
+            <img src="/src/pizzaq.webp" class="card-img-top" alt="Pizza Quattro Formaggi">
+            <div class="card-body">
+              <h5 class="card-title" data-lang-es="Pizza Quattro Formaggi" data-lang-en="Four Cheese Pizza" data-lang-pt="Pizza Quattro Formaggi">Pizza Quattro Formaggi</h5>
+              <p class="card-text" data-lang-es="Tomate, mozzarella, gorgonzola, parmesano, provolone." data-lang-en="Tomato, mozzarella, gorgonzola, parmesan, provolone." data-lang-pt="Tomate, mozzarella, gorgonzola, parmesão, provolone.">Tomate, mozzarella, gorgonzola, parmesano, provolone.</p>
+              <a href="#" class="btn btn-primary btn-dynamic" data-bs-toggle="modal" data-bs-target="#pizzaModal" data-bs-pizza-title="Pizza Quattro Formaggi" data-bs-pizza-img="/src/pizzaq.webp" data-bs-pizza-description="Tomate, mozzarella, gorgonzola, parmesano, provolone." data-lang-es="Más Info" data-lang-en="More Info" data-lang-pt="Mais Info">Más Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section container mt-5">
+      <h2 class="text-center" data-lang-es="Galería" data-lang-en="Gallery" data-lang-pt="Galeria">Galería</h2>
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6">
+          <img src="/src/imagen_convertida.webp" alt="Gallery Image 1" class="gallery-img">
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <img src="/src/gallery2.webp" alt="Gallery Image 2" class="gallery-img">
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <img src="/src/gallery2.webp" alt="Gallery Image 3" class="gallery-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section id="promotions" class="promotions-section container mt-5">
+      <h2 class="text-center" data-lang-es="Promociones" data-lang-en="Promotions" data-lang-pt="Promoções">Promociones</h2>
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card promotion-card">
+            <img src="/src/promo1.webp" class="card-img-top" alt="Promotion 1">
+            <div class="card-body">
+              <h5 class="card-title" data-lang-es="2x1 en Pizzas" data-lang-en="2x1 on Pizzas" data-lang-pt="2x1 em Pizzas">2x1 en Pizzas</h5>
+              <p class="card-text" data-lang-es="Compra una pizza y lleva otra gratis los martes." data-lang-en="Buy one pizza and get another free on Tuesdays." data-lang-pt="Compre uma pizza e leve outra grátis às terças-feiras.">Compra una pizza y lleva otra gratis los martes.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#visit" class="btn btn-primary btn-dynamic" data-lang-es="Nuestra Ubicación" data-lang-en="Our Location" data-lang-pt="Nossa Localização">Nuestra Ubicación</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card promotion-card">
+            <img src="/src/promo2.webp" class="card-img-top" alt="Promotion 2">
+            <div class="card-body">
+              <h5 class="card-title" data-lang-es="Descuento del 20%" data-lang-en="20% Discount" data-lang-pt="Desconto de 20%">Descuento del 20%</h5>
+              <p class="card-text" data-lang-es="Obtén un 20% de descuento en tu primera compra." data-lang-en="Get 20% off your first purchase." data-lang-pt="Obtenha 20% de desconto na sua primeira compra.">Obtén un 20% de descuento en tu primera compra.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#visit" class="btn btn-primary btn-dynamic" data-lang-es="Nuestra Ubicación" data-lang-en="Our Location" data-lang-pt="Nossa Localização">Nuestra Ubicación</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card promotion-card">
+            <img src="/src/promo3.webp" class="card-img-top" alt="Promotion 3">
+            <div class="card-body">
+              <h5 class="card-title" data-lang-es="Menú Especial de Fin de Semana" data-lang-en="Weekend Special Menu" data-lang-pt="Menu Especial de Fim de Semana">Menú Especial de Fin de Semana</h5>
+              <p class="card-text" data-lang-es="Disfruta de nuestras ofertas especiales cada fin de semana." data-lang-en="Enjoy our special offers every weekend." data-lang-pt="Aproveite nossas ofertas especiais todos os fins de semana.">Disfruta de nuestras ofertas especiales cada fin de semana.</p>
+            </div>
+            <div class="card-footer">
+              <a href="#visit" class="btn btn-primary btn-dynamic" data-lang-es="Nuestra Ubicación" data-lang-en="Our Location" data-lang-pt="Nossa Localização">Nuestra Ubicación</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section container mt-5">
+      <h2 class="text-center" data-lang-es="Reseñas de Clientes" data-lang-en="Customer Reviews" data-lang-pt="Avaliações de Clientes">Reseñas de Clientes</h2>
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card review-card">
+            <div class="card-body">
+              <h5 class="card-title">Juan Pérez</h5>
+              <p class="card-text">"La mejor pizza que he probado, excelente servicio y ambiente acogedor."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card review-card">
+            <div class="card-body">
+              <h5 class="card-title">María López</h5>
+              <p class="card-text">"Pizza Viva siempre tiene las mejores promociones y la calidad es insuperable."</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card review-card">
+            <div class="card-body">
+              <h5 class="card-title">Carlos Martínez</h5>
+              <p class="card-text">"No hay nada como disfrutar de una pizza de Pizza Viva en familia."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section id="comments" class="comments-section container mt-5 mb-5">
+      <h2 class="text-center" data-lang-es="Comentarios" data-lang-en="Comments" data-lang-pt="Comentários">Comentarios</h2>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="comment-card p-3 mb-3">
+            <h5>María García</h5>
+            <p>¡Me encanta la pizza de Pizza Viva! Siempre está deliciosa.</p>
+          </div>
+          <div class="comment-card p-3 mb-3">
+            <h5>José Fernández</h5>
+            <p>El ambiente es increíble y el personal muy amable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit Us Section -->
+    <section id="visit" class="visit-section container mt-5 mb-5">
+      <h2 class="text-center" data-lang-es="Visítanos" data-lang-en="Visit Us" data-lang-pt="Visite-nos">Visítanos</h2>
+      <div class="text-center mt-4">
+        <p data-lang-es="Estamos ubicados en el corazón de la ciudad. ¡Te esperamos para que disfrutes de la mejor pizza en un ambiente acogedor!" data-lang-en="We are located in the heart of the city. We look forward to welcoming you to enjoy the best pizza in a cozy atmosphere!" data-lang-pt="Estamos localizados no coração da cidade. Esperamos recebê-lo para desfrutar da melhor pizza em um ambiente acolhedor!">Estamos ubicados en el corazón de la ciudad. ¡Te esperamos para que disfrutes de la mejor pizza en un ambiente acogedor!</p>
+        <a href="#map" class="btn btn-primary btn-lg mt-4 btn-dynamic" data-lang-es="Ver Ubicación" data-lang-en="View Location" data-lang-pt="Ver Localização">Ver Ubicación</a>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map" class="map-section container mt-5 mb-5">
+      <h2 class="text-center" data-lang-es="Nuestra Ubicación" data-lang-en="Our Location" data-lang-pt="Nossa Localização">Nuestra Ubicación</h2>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div id="map-container" style="height: 400px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.27991737375!2d-74.25986593456906!3d40.697670066573025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c250b1e2a2b287%3A0x18f24a87a54152e2!2sNew%20York%2C%20NY%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sgt!4v1618915823677!5m2!1ses-419!2sgt" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="contact-section container mt-5 mb-5">
+      <h2 class="text-center" data-lang-es="Contacto" data-lang-en="Contact" data-lang-pt="Contato">Contacto</h2>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card contact-card">
+            <div class="card-body text-center">
+              <h5 class="card-title" data-lang-es="Contáctanos" data-lang-en="Contact Us" data-lang-pt="Contate-Nos">Contáctanos</h5>
+              <p class="card-text" data-lang-es="¿Listo para hacer un pedido? Llámanos o envíanos un correo electrónico." data-lang-en="Ready to place an order? Call us or send us an email." data-lang-pt="Pronto para fazer um pedido? Ligue para nós ou envie-nos um e-mail.">¿Listo para hacer un pedido? Llámanos o envíanos un correo electrónico.</p>
+              <a href="tel:+1234567890" class="btn btn-primary btn-dynamic" data-lang-es="Llamar" data-lang-en="Call" data-lang-pt="Ligar">Llamar</a>
+              <a href="mailto:info@pizzaviva.com" class="btn btn-secondary btn-dynamic" data-lang-es="Enviar Email" data-lang-en="Send Email" data-lang-pt="Enviar Email">Enviar Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pizzaModal" tabindex="-1" aria-labelledby="pizzaModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pizzaModalLabel">Detalles de la Pizza</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <img src="" id="pizzaModalImg" class="card-img-top" alt="Pizza Image">
+              <div class="card-body">
+                <h5 class="card-title" id="pizzaModalTitle"></h5>
+                <p class="card-text" id="pizzaModalDescription"></p>
+                <a href="tel:+1234567890" class="btn btn-primary btn-dynamic" data-lang-es="Llamar para Pedir" data-lang-en="Call to Order" data-lang-pt="Ligar para Pedir">Llamar para Pedir</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-4">
+      <p>© 2024 Pizza Viva. Todos los derechos reservados.</p>
+      <p>Síguenos en: 
+        <a href="#">Facebook</a> | 
+        <a href="#">Instagram</a> | 
+        <a href="#">Twitter</a>
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript para modal dinámico -->
+    <script>
+      const pizzaModal = document.getElementById('pizzaModal');
+      pizzaModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const title = button.getAttribute('data-bs-pizza-title');
+        const img = button.getAttribute('data-bs-pizza-img');
+        const description = button.getAttribute('data-bs-pizza-description');
+
+        const modalTitle = pizzaModal.querySelector('.modal-title');
+        const modalImg = pizzaModal.querySelector('#pizzaModalImg');
+        const modalDescription = pizzaModal.querySelector('#pizzaModalDescription');
+
+        modalTitle.textContent = title;
+        modalImg.src = img;
+        modalDescription.textContent = description;
+      });
+
+      // Language Switcher
+      document.getElementById('lang-es').addEventListener('click', () => switchLanguage('es'));
+      document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+      document.getElementById('lang-pt').addEventListener('click', () => switchLanguage('pt'));
+
+      function switchLanguage(lang) {
+        document.querySelectorAll('[data-lang-es]').forEach(el => {
+          el.textContent = el.getAttribute(`data-lang-${lang}`);
+        });
+      }
+
+      // Theme Switcher
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.getElementById('theme-toggle').textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.style.display = 'block';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      });
+
+      backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+  </body>
+</html>
